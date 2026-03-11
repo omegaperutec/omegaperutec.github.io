@@ -1,0 +1,99 @@
+---
+const { hero } = Astro.props;
+---
+
+<section class="hero section" id="inicio">
+  <div class="container hero-grid">
+    <div class="hero-copy" data-reveal>
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>
+        {hero.title}
+        <span>{hero.highlight}</span>
+      </h1>
+      <p class="hero-text">{hero.text}</p>
+      <div class="hero-ledger" aria-label="Enfoque de trabajo">
+        {
+          hero.ledger.map((item) => (
+            <div class="ledger-item">
+              <span class="ledger-kicker">{item.kicker}</span>
+              <strong>{item.text}</strong>
+            </div>
+          ))
+        }
+      </div>
+      <div class="hero-actions">
+        {
+          hero.actions.map((action) => (
+            <a class={`button button-${action.variant}`} href={action.href}>{action.label}</a>
+          ))
+        }
+      </div>
+      <div class="hero-proof" aria-label="Senales de confianza">
+        {
+          hero.proof.map((item) => (
+            <article class="proof-item">
+              <span class="proof-label">{item.label}</span>
+              <strong>{item.text}</strong>
+            </article>
+          ))
+        }
+      </div>
+      <ul class="hero-tags" aria-label="Especialidades">
+        {
+          hero.tags.map((item) => <li>{item}</li>)
+        }
+      </ul>
+    </div>
+
+    <div class="hero-visual" data-reveal>
+      <div class="visual-card">
+        <span class="sheet-mark sheet-mark-a" aria-hidden="true"></span>
+        <span class="sheet-mark sheet-mark-b" aria-hidden="true"></span>
+        <span class="sheet-mark sheet-mark-c" aria-hidden="true"></span>
+        <span class="visual-label">{hero.visual.label}</span>
+        <div class="visual-header" aria-hidden="true">
+          <span class="header-line header-line-a"></span>
+          <span class="header-line header-line-b"></span>
+        </div>
+        <svg class="network-graphic" viewBox="0 0 640 480" aria-hidden="true">
+          <g class="network-traces">
+            <path d="M96 114H278L360 190H546"></path>
+            <path d="M96 240H226L310 152H450"></path>
+            <path d="M96 362H260L380 290H546"></path>
+            <path d="M226 152V330"></path>
+            <path d="M360 190V290"></path>
+          </g>
+          <g class="network-pulses">
+            <circle cx="96" cy="114" r="16"></circle>
+            <circle cx="96" cy="240" r="13"></circle>
+            <circle cx="96" cy="362" r="16"></circle>
+            <circle cx="226" cy="152" r="18"></circle>
+            <circle cx="260" cy="362" r="14"></circle>
+            <circle cx="310" cy="152" r="12"></circle>
+            <circle cx="360" cy="190" r="18"></circle>
+            <circle cx="380" cy="290" r="16"></circle>
+            <circle cx="450" cy="152" r="14"></circle>
+            <circle cx="546" cy="190" r="19"></circle>
+            <circle cx="546" cy="290" r="16"></circle>
+          </g>
+        </svg>
+        <div class="visual-stack visual-stack-a" aria-hidden="true">
+          <span class="stack-kicker">{hero.visual.planning.kicker}</span>
+          <strong>{hero.visual.planning.text}</strong>
+        </div>
+        <div class="visual-stack visual-stack-b" aria-hidden="true">
+          <span class="stack-kicker">{hero.visual.operation.kicker}</span>
+          <strong>{hero.visual.operation.text}</strong>
+        </div>
+        <div class="metric-card metric-card-a">
+          <strong>{hero.visual.metrics[0].title}</strong>
+          <span>{hero.visual.metrics[0].text}</span>
+        </div>
+        <div class="metric-card metric-card-b">
+          <strong>{hero.visual.metrics[1].title}</strong>
+          <span>{hero.visual.metrics[1].text}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

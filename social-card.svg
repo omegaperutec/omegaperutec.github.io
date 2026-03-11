@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e40052" />
+      <stop offset="100%" stop-color="#ff8fb6" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.18" r="0.42">
+      <stop offset="0%" stop-color="#ffc3d8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffc3d8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#f3f0f1" />
+  <rect x="0" y="0" width="980" height="18" fill="#e40052" />
+  <rect x="668" y="32" width="380" height="14" fill="#f58ab0" opacity="0.9" />
+  <rect x="850" y="70" width="220" height="108" fill="#f58ab0" opacity="0.28" />
+  <rect x="932" y="98" width="190" height="126" fill="#f58ab0" opacity="0.16" />
+  <circle cx="912" cy="126" r="182" fill="url(#glow)" />
+  <path
+    d="M182 118c82.291 0 149 66.709 149 149S264.291 416 182 416 33 349.291 33 267 99.709 118 182 118zm0 54c-52.467 0-95 42.533-95 95s42.533 95 95 95 95-42.533 95-95-42.533-95-95-95z"
+    fill="url(#brand)"
+  />
+  <text
+    x="320"
+    y="246"
+    fill="#e40052"
+    font-family="Trebuchet MS, Segoe UI, sans-serif"
+    font-size="108"
+    font-weight="800"
+    letter-spacing="2"
+  >
+    OMEGA
+  </text>
+  <text
+    x="320"
+    y="304"
+    fill="#e40052"
+    font-family="Trebuchet MS, Segoe UI, sans-serif"
+    font-size="58"
+    font-weight="800"
+  >
+    PERU TEC
+  </text>
+  <text
+    x="80"
+    y="454"
+    fill="#22161b"
+    font-family="Trebuchet MS, Segoe UI, sans-serif"
+    font-size="58"
+    font-weight="700"
+  >
+    Cableado estructurado y soluciones de red corporativas
+  </text>
+  <text
+    x="80"
+    y="520"
+    fill="#65555d"
+    font-family="Trebuchet MS, Segoe UI, sans-serif"
+    font-size="34"
+  >
+    Infraestructura, equipamiento empresarial y evolucion de conectividad para organizaciones.
+  </text>
+  <rect x="0" y="592" width="1080" height="20" fill="#e40052" />
+  <rect x="1098" y="546" width="58" height="58" fill="#e40052" opacity="0.48" />
+</svg>

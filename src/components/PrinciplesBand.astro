@@ -1,0 +1,18 @@
+---
+const { principles } = Astro.props;
+---
+
+<section class="section section-band" aria-label="Principios de entrega">
+  <div class="container">
+    <div class="band-panel" data-reveal>
+      {
+        principles.map((item) => (
+          <article class="band-item">
+            <span class="band-title">{item.title}</span>
+            <p>{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

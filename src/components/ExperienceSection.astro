@@ -1,0 +1,159 @@
+---
+const { experience } = Astro.props;
+---
+
+<section class="section section-contrast" id="experiencia">
+  <div class="container section-split">
+    <div class="section-heading experience-heading" data-reveal>
+      <p class="eyebrow">{experience.eyebrow}</p>
+      <h2>{experience.title}</h2>
+      {
+        experience.paragraphs.map((paragraph) => <p>{paragraph}</p>)
+      }
+      <ul class="check-list">
+        {
+          experience.checks.map((item) => <li>{item}</li>)
+        }
+      </ul>
+    </div>
+
+    <div class="experience-visuals" data-reveal>
+      <div class="experience-board">
+        {
+          experience.tiles.map((tile) => (
+            <article class={`experience-tile${tile.primary ? " experience-tile-primary" : ""}`}>
+              <span class="tile-label">{tile.label}</span>
+              {tile.title && <h3>{tile.title}</h3>}
+              <p>{tile.text}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <article class="migration-visual" data-active-stage="0">
+        <div class="migration-copy">
+          <p class="eyebrow">{experience.migration.eyebrow}</p>
+          <h3>{experience.migration.title}</h3>
+          <p>{experience.migration.text}</p>
+        </div>
+
+        <div class="migration-stage-list" role="tablist" aria-label="Etapas de migracion SD-WAN">
+          {
+            experience.migration.stages.map((stage, index) => (
+              <button
+                class={`migration-stage${index === 0 ? " is-active" : ""}`}
+                type="button"
+                role="tab"
+                aria-selected={index === 0 ? "true" : "false"}
+                aria-controls={`migration-panel-${index}`}
+                id={`migration-tab-${index}`}
+                tabindex={index === 0 ? "0" : "-1"}
+                data-stage={index}
+              >
+                <span>{stage.tag}</span>
+                <strong>{stage.name}</strong>
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="migration-dashboard">
+          <div class="migration-graph-shell">
+            <svg class="migration-graph" viewBox="0 0 760 360" aria-hidden="true">
+              <defs>
+                <linearGradient id="migrationLegacy" x1="0%" x2="100%">
+                  <stop offset="0%" stop-color="#ff8ab1"></stop>
+                  <stop offset="100%" stop-color="#e40052"></stop>
+                </linearGradient>
+                <linearGradient id="migrationSdwan" x1="0%" x2="100%">
+                  <stop offset="0%" stop-color="#ffb18f"></stop>
+                  <stop offset="100%" stop-color="#ff7a18"></stop>
+                </linearGradient>
+              </defs>
+              <g class="migration-node-group">
+                <rect x="32" y="118" width="128" height="92" rx="28"></rect>
+                <rect x="302" y="24" width="158" height="72" rx="24"></rect>
+                <rect x="302" y="142" width="158" height="72" rx="24"></rect>
+                <rect x="302" y="260" width="158" height="72" rx="24"></rect>
+                <rect x="596" y="118" width="132" height="92" rx="28"></rect>
+              </g>
+              <g class="migration-node-copy">
+                <text x="96" y="154">Sucursal</text>
+                <text x="96" y="178">activa</text>
+                <text x="381" y="66">Overlay</text>
+                <text x="381" y="186">Buffer</text>
+                <text x="381" y="210">sin perdida</text>
+                <text x="381" y="302">Fabric</text>
+                <text x="381" y="326">SD-WAN</text>
+                <text x="662" y="154">DC / Nube</text>
+                <text x="662" y="178">productiva</text>
+              </g>
+              <g class="migration-flow migration-flow-stage-0">
+                <path class="flow-line flow-line-legacy" d="M160 154C208 154 230 60 302 60"></path>
+                <path class="flow-line flow-line-legacy" d="M460 60C530 60 552 154 596 154"></path>
+                <path class="flow-line flow-line-buffer" d="M160 172C228 172 240 178 302 178"></path>
+                <path class="flow-line flow-line-buffer" d="M460 178C522 178 542 172 596 172"></path>
+                <path class="flow-line flow-line-sdwan" d="M160 190C208 190 234 296 302 296"></path>
+                <path class="flow-line flow-line-sdwan" d="M460 296C530 296 552 190 596 190"></path>
+              </g>
+              <g class="migration-flow migration-flow-stage-1">
+                <path class="flow-line flow-line-legacy" d="M160 150C208 150 238 60 302 60"></path>
+                <path class="flow-line flow-line-legacy" d="M460 60C524 60 554 150 596 150"></path>
+                <path class="flow-line flow-line-buffer" d="M160 172C228 172 240 178 302 178"></path>
+                <path class="flow-line flow-line-buffer" d="M460 178C522 178 542 172 596 172"></path>
+                <path class="flow-line flow-line-sdwan" d="M160 194C224 194 236 296 302 296"></path>
+                <path class="flow-line flow-line-sdwan" d="M460 296C528 296 542 194 596 194"></path>
+              </g>
+              <g class="migration-flow migration-flow-stage-2">
+                <path class="flow-line flow-line-legacy" d="M160 146C214 146 246 60 302 60"></path>
+                <path class="flow-line flow-line-legacy" d="M460 60C520 60 550 146 596 146"></path>
+                <path class="flow-line flow-line-buffer" d="M160 172C228 172 240 178 302 178"></path>
+                <path class="flow-line flow-line-buffer" d="M460 178C522 178 542 172 596 172"></path>
+                <path class="flow-line flow-line-sdwan" d="M160 198C228 198 240 296 302 296"></path>
+                <path class="flow-line flow-line-sdwan" d="M460 296C534 296 542 198 596 198"></path>
+              </g>
+            </svg>
+            <div class="migration-graph-legend" aria-label="Leyenda del flujo">
+              <span class="legend-legacy">Overlay legado</span>
+              <span class="legend-buffer">Proteccion de sesion</span>
+              <span class="legend-sdwan">Camino SD-WAN</span>
+            </div>
+          </div>
+
+          <div class="migration-side">
+            {
+              experience.migration.stages.map((stage, index) => (
+                <section
+                  class={`migration-panel${index === 0 ? " is-active" : ""}`}
+                  id={`migration-panel-${index}`}
+                  role="tabpanel"
+                  aria-labelledby={`migration-tab-${index}`}
+                  hidden={index === 0 ? undefined : true}
+                  data-stage-panel={index}
+                >
+                  <p class="migration-summary">{stage.summary}</p>
+                  <p class="migration-emphasis">{stage.emphasis}</p>
+                  <div class="migration-stats" aria-label={`Metricas de ${stage.name}`}>
+                    {
+                      stage.stats.map((stat) => (
+                        <article class="migration-stat">
+                          <span>{stat.label}</span>
+                          <strong>{stat.value}</strong>
+                        </article>
+                      ))
+                    }
+                  </div>
+                  <ul class="migration-checks">
+                    {
+                      stage.bullets.map((item) => <li>{item}</li>)
+                    }
+                  </ul>
+                </section>
+              ))
+            }
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

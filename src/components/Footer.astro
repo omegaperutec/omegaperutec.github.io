@@ -1,0 +1,13 @@
+---
+const { company, footer } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>{company.name}</strong>
+      <p>{footer.summary}</p>
+    </div>
+    <p><span id="current-year">2026</span> | {footer.note}</p>
+  </div>
+</footer>

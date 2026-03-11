@@ -1,0 +1,78 @@
+---
+import "../styles/global.css";
+
+const {
+  site,
+  title = site.seo.title,
+  description = site.seo.description,
+} = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${site.company.url}#organization`,
+      name: site.company.name,
+      alternateName: site.company.legalName,
+      url: site.company.url,
+      logo: `${site.company.url}social-card.svg`,
+      description: site.company.longDescription,
+      areaServed: site.schema.areaServed,
+      knowsAbout: site.schema.knowsAbout,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.company.url}#website`,
+      url: site.company.url,
+      name: site.company.name,
+      publisher: {
+        "@id": `${site.company.url}#organization`,
+      },
+      inLanguage: "es-PE",
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es-PE" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content={site.company.name} />
+    <meta name="theme-color" content={site.seo.themeColor} />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={site.company.url} />
+    <meta property="og:site_name" content={site.company.name} />
+    <meta property="og:locale" content={site.seo.locale} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={site.seo.title} />
+    <meta property="og:description" content={site.seo.ogDescription} />
+    <meta property="og:url" content={site.company.url} />
+    <meta property="og:image" content={`${site.company.url}social-card.svg`} />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta
+      property="og:image:alt"
+      content="Identidad visual de Omega Peru Tec sobre fondo claro con acentos magenta."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={site.seo.title} />
+    <meta name="twitter:description" content={site.seo.twitterDescription} />
+    <meta name="twitter:image" content={`${site.company.url}social-card.svg`} />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    <script defer src="/main.js"></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

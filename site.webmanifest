@@ -1,0 +1,18 @@
+{
+  "name": "Omega Peru Tec",
+  "short_name": "Omega",
+  "description": "Cableado estructurado, equipos de red empresariales y soluciones de conectividad corporativa.",
+  "lang": "es-PE",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f0f1",
+  "theme_color": "#e40052",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import HeroSection from "../components/HeroSection.astro";
+import PrinciplesBand from "../components/PrinciplesBand.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import ExperienceSection from "../components/ExperienceSection.astro";
+import CapabilitiesSection from "../components/CapabilitiesSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site.js";
+---
+
+<BaseLayout site={site}>
+  <Header company={site.company} navigation={site.navigation} />
+
+  <main id="contenido">
+    <HeroSection hero={site.hero} />
+    <PrinciplesBand principles={site.principles} />
+    <ServicesSection services={site.services} />
+    <ExperienceSection experience={site.experience} />
+    <CapabilitiesSection capabilities={site.capabilities} />
+    <ContactSection contact={site.contact} email={site.company.email} />
+  </main>
+
+  <Footer company={site.company} footer={site.footer} />
+</BaseLayout>

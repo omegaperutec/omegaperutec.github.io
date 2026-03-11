@@ -1,0 +1,45 @@
+---
+const { company, navigation } = Astro.props;
+---
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<div class="page-chrome" aria-hidden="true">
+  <span class="chrome-bar chrome-bar-a"></span>
+  <span class="chrome-bar chrome-bar-b"></span>
+  <span class="chrome-bar chrome-bar-c"></span>
+  <span class="chrome-block chrome-block-a"></span>
+  <span class="chrome-block chrome-block-b"></span>
+  <span class="chrome-block chrome-block-c"></span>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#inicio" aria-label={company.name}>
+      <svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="brandGradient" x1="0" x2="1">
+            <stop offset="0%" stop-color="#e40052"></stop>
+            <stop offset="100%" stop-color="#ff7ba8"></stop>
+          </linearGradient>
+        </defs>
+        <path
+          d="M60 16c25.4 0 46 20.6 46 46S85.4 108 60 108 14 87.4 14 62 34.6 16 60 16zm0 21c-13.8 0-25 11.2-25 25s11.2 25 25 25 25-11.2 25-25-11.2-25-25-25z"
+          fill="url(#brandGradient)"
+        ></path>
+      </svg>
+      <span class="brand-copy">
+        <strong>OMEGA</strong>
+        <span>PERU TEC</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Principal">
+      {
+        navigation.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

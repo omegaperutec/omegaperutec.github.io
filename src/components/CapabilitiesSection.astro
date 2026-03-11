@@ -1,0 +1,69 @@
+---
+const { capabilities } = Astro.props;
+---
+
+<section class="section" id="capacidades">
+  <div class="container">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">{capabilities.eyebrow}</p>
+      <h2>{capabilities.title}</h2>
+    </div>
+
+    <div class="capability-grid">
+      {
+        capabilities.cards.map((item) => (
+          <article class="capability-card" data-reveal>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="signal-panel" data-reveal>
+      <div class="signal-copy">
+        <p class="eyebrow">{capabilities.signal.eyebrow}</p>
+        <h3>{capabilities.signal.title}</h3>
+        <p>{capabilities.signal.text}</p>
+      </div>
+      <ul class="chip-list" aria-label="Cobertura de soluciones">
+        {
+          capabilities.signal.chips.map((item) => <li>{item}</li>)
+        }
+      </ul>
+    </div>
+
+    <div class="diagram-panel" data-reveal>
+      <div class="diagram-copy">
+        <p class="eyebrow">{capabilities.diagram.eyebrow}</p>
+        <h3>{capabilities.diagram.title}</h3>
+      </div>
+      <svg class="architecture-diagram" viewBox="0 0 960 320" aria-hidden="true">
+        <g class="diagram-bars">
+          <rect x="24" y="28" width="212" height="72" rx="26"></rect>
+          <rect x="262" y="28" width="212" height="72" rx="26"></rect>
+          <rect x="500" y="28" width="212" height="72" rx="26"></rect>
+          <rect x="724" y="28" width="212" height="72" rx="26"></rect>
+          <rect x="138" y="206" width="212" height="72" rx="26"></rect>
+          <rect x="382" y="206" width="212" height="72" rx="26"></rect>
+          <rect x="626" y="206" width="212" height="72" rx="26"></rect>
+        </g>
+        <g class="diagram-links">
+          <path d="M236 64H262"></path>
+          <path d="M474 64H500"></path>
+          <path d="M712 64H724"></path>
+          <path d="M350 242H382"></path>
+          <path d="M594 242H626"></path>
+          <path d="M130 98L180 206"></path>
+          <path d="M470 98L488 206"></path>
+          <path d="M810 98L734 206"></path>
+        </g>
+      </svg>
+      <div class="diagram-legend">
+        {
+          capabilities.diagram.legend.map((item) => <span>{item}</span>)
+        }
+      </div>
+    </div>
+  </div>
+</section>

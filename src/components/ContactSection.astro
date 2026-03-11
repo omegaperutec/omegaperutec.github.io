@@ -1,0 +1,115 @@
+---
+const { contact, email } = Astro.props;
+---
+
+<section class="section section-callout" id="contacto">
+  <div class="container contact-panel" data-reveal>
+    <div class="contact-copy">
+      <p class="eyebrow">{contact.eyebrow}</p>
+      <h2>{contact.title}</h2>
+      <p>{contact.text}</p>
+      <div class="contact-trust" aria-label="Compromisos comerciales">
+        {
+          contact.trust.map((item) => (
+            <article class="trust-item">
+              <span class="trust-kicker">{item.kicker}</span>
+              <strong>{item.text}</strong>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <form class="quote-form" id="quote-form" novalidate>
+      <div class="field-grid">
+        <label class="field">
+          <span>Nombre completo</span>
+          <input type="text" name="nombre" autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span>Empresa</span>
+          <input type="text" name="empresa" autocomplete="organization-title" required />
+        </label>
+        <label class="field">
+          <span>Correo corporativo</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="field">
+          <span>Telefono</span>
+          <input type="tel" name="telefono" autocomplete="tel" required />
+        </label>
+      </div>
+
+      <div class="field-grid">
+        <label class="field">
+          <span>Servicio principal</span>
+          <select name="servicio" id="service-type" required>
+            <option value="cableado">Cableado estructurado</option>
+            <option value="equipos">Equipos de red empresariales</option>
+            <option value="solucion">Solucion integral de red</option>
+            <option value="migracion">Migracion y modernizacion</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Puntos de red</span>
+          <input type="number" name="puntos" id="points" min="1" max="1200" value="24" required />
+        </label>
+        <label class="field">
+          <span>Metros de cableado</span>
+          <input type="number" name="metros" id="meters" min="10" max="50000" value="320" required />
+        </label>
+        <label class="field">
+          <span>Racks / gabinetes</span>
+          <input type="number" name="racks" id="racks" min="0" max="80" value="1" required />
+        </label>
+      </div>
+
+      <label class="field field-full">
+        <span>Nivel de urgencia</span>
+        <select name="urgencia" id="urgency">
+          <option value="normal">Normal (15 a 20 dias)</option>
+          <option value="prioritario">Prioritario (7 a 10 dias)</option>
+          <option value="critico">Critico (48 a 72 horas)</option>
+        </select>
+      </label>
+
+      <label class="field field-full">
+        <span>Notas del proyecto</span>
+        <textarea
+          name="mensaje"
+          rows="4"
+          placeholder="Sedes involucradas, horarios de ventana, restricciones de acceso o requerimientos especiales."
+        ></textarea>
+      </label>
+
+      <div class="quote-preview" aria-live="polite" aria-atomic="true">
+        <h3>Cotizacion automatica referencial</h3>
+        <dl>
+          <div>
+            <dt>Subtotal</dt>
+            <dd id="quote-subtotal">S/ 0.00</dd>
+          </div>
+          <div>
+            <dt>IGV (18%)</dt>
+            <dd id="quote-tax">S/ 0.00</dd>
+          </div>
+          <div class="quote-total">
+            <dt>Total estimado</dt>
+            <dd id="quote-total">S/ 0.00</dd>
+          </div>
+        </dl>
+        <p class="quote-disclaimer">
+          Valor referencial sujeto a visita tecnica, disponibilidad y alcance final.
+        </p>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="button button-primary">Enviar solicitud y cotizacion</button>
+        <a id="email-link" class="button button-secondary" href={`mailto:${email}`}>
+          Abrir correo prellenado
+        </a>
+      </div>
+      <p id="form-status" class="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
