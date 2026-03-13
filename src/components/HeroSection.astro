@@ -11,38 +11,6 @@ const { hero } = Astro.props;
         <span>{hero.highlight}</span>
       </h1>
       <p class="hero-text">{hero.text}</p>
-      <div class="hero-ledger" aria-label="Enfoque de trabajo">
-        {
-          hero.ledger.map((item) => (
-            <div class="ledger-item">
-              <span class="ledger-kicker">{item.kicker}</span>
-              <strong>{item.text}</strong>
-            </div>
-          ))
-        }
-      </div>
-      <div class="hero-actions">
-        {
-          hero.actions.map((action) => (
-            <a class={`button button-${action.variant}`} href={action.href}>{action.label}</a>
-          ))
-        }
-      </div>
-      <div class="hero-proof" aria-label="Senales de confianza">
-        {
-          hero.proof.map((item) => (
-            <article class="proof-item">
-              <span class="proof-label">{item.label}</span>
-              <strong>{item.text}</strong>
-            </article>
-          ))
-        }
-      </div>
-      <ul class="hero-tags" aria-label="Especialidades">
-        {
-          hero.tags.map((item) => <li>{item}</li>)
-        }
-      </ul>
     </div>
 
     <div class="hero-visual" data-reveal>
@@ -95,5 +63,40 @@ const { hero } = Astro.props;
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="container hero-support" data-reveal>
+    <div class="hero-ledger" aria-label="Enfoque de trabajo">
+      {
+        hero.ledger.map((item) => (
+          <div class="ledger-item">
+            <span class="ledger-kicker">{item.kicker}</span>
+            <strong>{item.text}</strong>
+          </div>
+        ))
+      }
+    </div>
+    <div class="hero-actions">
+      {
+        hero.actions.map((action) => (
+          <a class={`button button-${action.variant}`} href={action.href}>{action.label}</a>
+        ))
+      }
+    </div>
+    <div class="hero-proof" aria-label="Senales de confianza">
+      {
+        hero.proof.map((item) => (
+          <article class="proof-item">
+            <span class="proof-label">{item.label}</span>
+            <strong>{item.text}</strong>
+          </article>
+        ))
+      }
+    </div>
+    <ul class="hero-tags" aria-label="Especialidades">
+      {
+        hero.tags.map((item) => <li>{item}</li>)
+      }
+    </ul>
   </div>
 </section>

@@ -3,22 +3,22 @@ const { experience } = Astro.props;
 ---
 
 <section class="section section-contrast" id="experiencia">
-  <div class="container section-split">
-    <div class="section-heading experience-heading" data-reveal>
-      <p class="eyebrow">{experience.eyebrow}</p>
-      <h2>{experience.title}</h2>
-      {
-        experience.paragraphs.map((paragraph) => <p>{paragraph}</p>)
-      }
-      <ul class="check-list">
+  <div class="container experience-layout">
+    <div class="experience-overview">
+      <div class="section-heading experience-heading" data-reveal>
+        <p class="eyebrow">{experience.eyebrow}</p>
+        <h2>{experience.title}</h2>
         {
-          experience.checks.map((item) => <li>{item}</li>)
+          experience.paragraphs.map((paragraph) => <p>{paragraph}</p>)
         }
-      </ul>
-    </div>
+        <ul class="check-list">
+          {
+            experience.checks.map((item) => <li>{item}</li>)
+          }
+        </ul>
+      </div>
 
-    <div class="experience-visuals" data-reveal>
-      <div class="experience-board">
+      <div class="experience-board" data-reveal>
         {
           experience.tiles.map((tile) => (
             <article class={`experience-tile${tile.primary ? " experience-tile-primary" : ""}`}>
@@ -29,8 +29,9 @@ const { experience } = Astro.props;
           ))
         }
       </div>
+    </div>
 
-      <article class="migration-visual" data-active-stage="0">
+    <article class="migration-visual" data-reveal data-active-stage="0">
         <div class="migration-copy">
           <p class="eyebrow">{experience.migration.eyebrow}</p>
           <h3>{experience.migration.title}</h3>
@@ -154,6 +155,5 @@ const { experience } = Astro.props;
           </div>
         </div>
       </article>
-    </div>
   </div>
 </section>
