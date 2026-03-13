@@ -6,6 +6,7 @@ const {
   title = site.seo.title,
   description = site.seo.description,
 } = Astro.props;
+const socialImage = `${site.company.url}${site.seo.image.replace(/^\//, "")}`;
 
 const schema = {
   "@context": "https://schema.org",
@@ -16,7 +17,7 @@ const schema = {
       name: site.company.name,
       alternateName: site.company.legalName,
       url: site.company.url,
-      logo: `${site.company.url}social-card.svg`,
+      logo: socialImage,
       description: site.company.longDescription,
       areaServed: site.schema.areaServed,
       knowsAbout: site.schema.knowsAbout,
@@ -59,8 +60,11 @@ const schema = {
     <meta property="og:title" content={site.seo.title} />
     <meta property="og:description" content={site.seo.ogDescription} />
     <meta property="og:url" content={site.company.url} />
-    <meta property="og:image" content={`${site.company.url}social-card.svg`} />
-    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:secure_url" content={socialImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
       content="Identidad visual de Omega Peru Tec sobre fondo claro con acentos magenta."
@@ -68,7 +72,11 @@ const schema = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={site.seo.title} />
     <meta name="twitter:description" content={site.seo.twitterDescription} />
-    <meta name="twitter:image" content={`${site.company.url}social-card.svg`} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta
+      name="twitter:image:alt"
+      content="Identidad visual de Omega Peru Tec sobre fondo claro con acentos magenta."
+    />
     <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
     <script defer src="/main.js"></script>
   </head>

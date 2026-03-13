@@ -19,7 +19,7 @@ export const site = {
       "Infraestructura de red, cableado estructurado, equipamiento empresarial y soluciones corporativas de conectividad.",
     themeColor: "#e40052",
     locale: "es_PE",
-    image: "/social-card.svg",
+    image: "/social-card.png",
   },
   navigation: [
     { href: "#servicios", label: "Servicios" },
